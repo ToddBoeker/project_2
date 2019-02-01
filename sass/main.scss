@@ -1,0 +1,133 @@
+// @import 'partials/reset' 
+// - label your partial files with underscore fire "_partials"
+
+body{
+    background-color:black;
+    font-size: 16px;
+    color:#ffffff;
+    font-family: 'Open Sans', sans-serif;
+}
+
+.container{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-content: center;
+    
+}
+
+.nytlogo {
+    display:flex;
+    width: 20%;
+    // flex-direction: column-reverse;
+    justify-content: center;
+}
+
+.nytlogo img {
+
+height:200px;
+width:300px;
+padding:20px;
+}
+
+
+.categories{
+    display:flex;
+    flex-direction: row;
+    justify-content: center;
+    width:80%;
+
+}
+
+.dropdown {
+    display:flex; 
+    // position: absolute;
+    
+}
+
+//variables
+/*Variables8*/
+$brand-red:#961d1d;
+$base-margin: 1.5em;
+$link-color: rgb(114, 114, 233);
+$text-color:darkgreen;
+$size:24px;
+$desktop-width: 1240px;
+
+@mixin desktop {
+    @media only screen and (min-width: $desktop-width) {
+        @content
+    }
+}
+
+@mixin primary-links {
+    color:blue;
+    text-decoration: none
+}
+
+a {
+    @include primary-links;
+}
+
+@mixin headline($color, $size) {
+    color: $color;
+    font-size: $size;
+
+}
+
+.message {
+    border: 3px solid white;
+    padding: 5%;
+    color:black;
+}
+
+.success {
+   @extend .message;
+    border: 3px solid white;
+    padding: 5%;
+    color:black;
+}
+
+@function set-contrast-color($color) {
+    @if (lightness($color)> 50) {
+        @return black;
+    } @else {
+        @return white;
+    }
+}
+
+.main-navigation {
+    margin-left:0;
+    li{
+    color:red;
+
+    }
+    p{
+    font-size:15px;
+    }
+    margin-bottom: $base-margin + (3*4);
+}
+
+a{
+    color:$link-color;
+    &:hover {
+        text-decoration: underline;
+        color:darken($link-color, 25%)
+    }
+
+    &:visitied {
+        color: mix($link-color, white, 50%)
+
+    }
+}
+
+h3{
+    font-size: 1.5em;
+    .widget &{
+        font-size: 1.25em;
+    }
+}
+
+footer {
+    color:#c2c2b2;
+}
