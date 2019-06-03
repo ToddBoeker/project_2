@@ -19,19 +19,20 @@ $(function() {
         })
 
         .done(function(data){ 
-            console.log(data.results);
-
-            console.log(data.results[3].multimedia[3].url);
-            var x;
-            for(x = 0; x < 12; x++) {
-                console.log(data.results[x].multimedia.url);
-            }
-            var y;
-            for (y= 0; y< 12; y++) {
-                console.log(data.results[y].abstract);
-            }
-
-            $results.append(.ultimedima+.abstract ());
+            const $section = $('section');
+            $section.empty();
+            $section.append('<ul></ul>');
+            const articles = data.results;
+            let articleCounter = 0;
+            articles.forEach(article => {
+                if (article.multimedia.length !== 0 && articleCounter < 12) {
+                    articleCounter++;
+                    const articleUrl = article.url;
+                    const articleAbstract = article.abstract;
+                    $section.find('ul').append(`<li><a href=${articleUrl}></a></li>`);
+                    $(`section ul li:nth-child(${articleCounter})`).css('backgroundImage', `url(${article.multimedia[4].url})`);
+                }
+            });
             
             
         })
